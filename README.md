@@ -1,6 +1,6 @@
 # Integration between Java EE and AngularJS
 
-1.	INTRODUCTION
+## 1. INTRODUCTION
 
 The goal of this assignment is to develop a small and simple application which shows an integration between Java EE 7 and AngularJS.
 
@@ -12,7 +12,7 @@ The application was written along the lines shown in this example:
 http://www.radcortez.com/java-ee-7-with-angular-js-crud-rest-validations-part-2/
 
 
-2.	IMPLEMENTATION
+## 2. IMPLEMENTATION
 
 The application is composed of two entities class: **Author** and **Book**. These entities allow to model an object class into a database table by using the annotation @Entity in order to connect to the database table with the same name (or create it if it is not here yet).
 For this reason, the **persistence.xml** file is essential to connect to the DB:
@@ -134,7 +134,8 @@ However, the UI was implemented using Bootstrap and this is the final result of 
  
 
 
-3.	DEPLOYMENT
+## 3. DEPLOYMENT
+
 To run the application is important to configure correctly the environment.
 
 First of all, it is necessary to run Apache Derby typing the following command:
@@ -149,4 +150,4 @@ Moreover, the connection URL ensure the connection to Derby and the creation of 
  
 Now the war file **library-angular.war** have to be copied in the deployments folder of WildFly. Launching the **standalone.bat** (or **standalone.sh**) file, WildFly starts and deploys the file.
 
-Now, connecting to the address http://localhost:8080/library-angular/ is possible to use the application.
+Now, connecting to the address **http://localhost:8080/library-angular/** is possible to use the application.
