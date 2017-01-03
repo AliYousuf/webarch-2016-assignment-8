@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<!-- Declares the root element that allows behaviour to be modified through Angular custom HTML tags. -->
+<html lang="en" ng-app="books">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<title>Library</title>
+
+<!-- Bootstrap core CSS -->
+<link rel="stylesheet" href="lib/dependencies/css/bootstrap.min.css" />
+
+<!-- Custom styles for this template -->
+<link rel="stylesheet" href="css/style.css" />
+
+<!-- third-party js -->
+<script src="lib/dependencies/angular.min.js"></script>
+<script src="lib/dependencies/angular-resource.min.js"></script>
+<script src="lib/dependencies/jquery.min.js"></script>
+<script src="lib/dependencies/ui-bootstrap-tpls.min.js"></script>
+
+<!-- Controllers js -->
+<script src="script/library.js"></script>
+
+</head>
+
+<body>
+
+	<h1>Library</h1>
+
+	<div class="message" ng-controller="alertMessagesController">
+		<alert ng-repeat="alert in alerts" type="{{alert.type}}"
+			close="closeAlert($index)">{{alert.msg}}</alert>
+	</div>
+
+	<br>
+
+	<div class="form" ng-controller="AuthorController">
+		<h3>Add Author</h3>
+		<form ng-submit="addAuthor()">
+			<div class="form-group">
+				<label for="name">Name:</label> <input id="name" name="name"
+					type="text" class="form-control" maxlength="50" ng-model="newName"
+					required />
+			</div>
+			<div class="buttons">
+				<button type="button" class="btn btn-primary" ng-click="clearForm()">Clear</button>
+				<button type="submit" class="btn btn-primary">Save</button>
+			</div>
+		</form>
+	</div>
+
+	<div class="form" ng-controller="BookController">
+		<h3>Add Book</h3>
+		<form ng-submit="addBook()">
+			<div class="form-group">
+				<label>Title:</label> <input name="title" type="text"
+					class="form-control" maxlength="50" ng-model="newTitle" required />
+			</div>
+			<div class="form-group">
+				<label>Price:</label> <input name="price" type="text"
+					class="form-control" maxlength="50" ng-model="newPrice" required />
+			</div>
+			<div class="form-group">
+				<label>Author:</label> <select name="author" class="form-control"
+					ng-options="author as author.name for author in authors"
+					ng-init="loadData()" ng-model="selected"></select>
+			</div>
+			<div class="buttons">
+				<button type="button" class="btn btn-primary" ng-click="clearForm()">Clear</button>
+				<button type="submit" class="btn btn-primary">Save</button>
+			</div>
+		</form>
+	</div>
+
+	<div ng-controller="BookListController">
+		<h3>Books available</h3>
+		<table class="table" ng-init="refreshTable()">
+			<tr>
+				<th>Title</th>
+				<th>Price</th>
+				<th>Author</th>
+				<th></th>
+			</tr>
+			<tr ng-repeat="book in books">
+				<td>{{book.title}}</td>
+				<td>{{book.price}} €</td>
+				<td>{{book.author.name}}</td>
+				<td><button class="btn btn-danger" ng-click="removeBook(book)">Delete</button></td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>
