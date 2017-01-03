@@ -15,6 +15,7 @@ http://www.radcortez.com/java-ee-7-with-angular-js-crud-rest-validations-part-2/
 ## 2. IMPLEMENTATION
 
 The application is composed of two entities class: **Author** and **Book**. These entities allow to model an object class into a database table by using the annotation @Entity in order to connect to the database table with the same name (or create it if it is not here yet).
+
 For this reason, the **persistence.xml** file is essential to connect to the DB:
  
 ```xml
@@ -132,7 +133,7 @@ Each book has a delete button that calls the **removeBook(book)** function in th
 
 However, the UI was implemented using Bootstrap and this is the final result of the entire application:
  
-
+![image](https://cloud.githubusercontent.com/assets/24565161/21606799/4032e798-d1b2-11e6-9b24-3db4e6e794e6.png)
 
 ## 3. DEPLOYMENT
 
@@ -146,7 +147,11 @@ java  –jar  DERBY_HOME/lib/derbyrun.jar  server  start  &
  
 After that, it is necessary to create a new JDBC Datasource in WildFly using the **derbyclient.jar** driver.
  
+![image](https://cloud.githubusercontent.com/assets/24565161/21606807/4789c2be-d1b2-11e6-9bdf-108f55bd349b.png)
+ 
 Moreover, the connection URL ensure the connection to Derby and the creation of a DB named **LibraryDB** whether it is not already present.
+ 
+![image](https://cloud.githubusercontent.com/assets/24565161/21606809/4b4500b2-d1b2-11e6-966a-9c3ef5224aed.png)
  
 Now the war file **library-angular.war** have to be copied in the deployments folder of WildFly. Launching the **standalone.bat** (or **standalone.sh**) file, WildFly starts and deploys the file.
 
